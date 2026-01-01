@@ -1,12 +1,12 @@
 import cv2
 import numpy as np
-import torch
 from torchvision import transforms
 
 
 class CLAHETransform:
     """
     Apply CLAHE on the green channel of a retinal image.
+    Expects input as PIL Image.
     """
     def __init__(self, clip_limit=2.0, tile_grid_size=(8, 8)):
         self.clahe = cv2.createCLAHE(
@@ -15,10 +15,10 @@ class CLAHETransform:
         )
 
     def __call__(self, img):
-        # img: PIL Image → numpy array
+        # PIL Image → NumPy array (RGB)
         img = np.array(img)
 
-        # Convert to RGB if needed
+        # Safety: ensure 3 channels
         if img.ndim == 2:
             img = cv2.cvtColor(img, cv2.COLOR_GRAY2RGB)
 
@@ -35,21 +35,19 @@ class CLAHETransform:
 
 
 def get_transforms(train=True):
-    base_transforms = [
-        transforms.ToPILImage(),
-        transforms.Resize((224, 224)),
-        CLAHETransform(),
-        transforms.ToTensor(),
+    transform_list = [
+        transforms.Resize((224, 224)),   # PIL → PIL
+        CLAHETransform(),                # PIL → NumPy
+        transforms.ToTensor(),           # NumPy → Tensor
         transforms.Normalize(
             mean=[0.485, 0.456, 0.406],
             std=[0.229, 0.224, 0.225]
-        ),
+        )
     ]
 
     if train:
-        base_transforms.insert(
-            2,
-            transforms.RandomHorizontalFlip(p=0.5)
+        transform_list.insert(
+            1, transforms.RandomHorizontalFlip(p=0.5)
         )
 
-    return transforms.Compose(base_transforms)
+    return transforms.Compose(transform_list)
