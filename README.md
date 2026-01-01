@@ -1,0 +1,1 @@
+This project implements a binary automated screening system for Retinopathy of Prematurity (ROP) using retinal images, with Grad-CAM based visual explanations.
