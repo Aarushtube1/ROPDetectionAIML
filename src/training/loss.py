@@ -3,7 +3,6 @@ import torch.nn as nn
 
 def get_loss(pos_weight=None):
     """
-    Binary Cross Entropy with logits.
     pos_weight > 1 increases importance of ROP-positive samples.
     """
     if pos_weight is not None:

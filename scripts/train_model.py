@@ -14,9 +14,9 @@ import pandas as pd
 
 # ---------------- CONFIG ----------------
 BATCH_SIZE = 16
-EPOCHS = 15
+EPOCHS = 20
 LR = 1e-4
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu" 
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 TRAIN_CSV = PROJECT_ROOT / "data/splits/train.csv"
@@ -50,7 +50,9 @@ def main():
 
     for epoch in range(1, EPOCHS + 1):
         train_loss = train_one_epoch(
-            model, train_loader, optimizer, criterion, DEVICE
+            model, train
+            
+            _loader, optimizer, criterion, DEVICE
         )
         val_loss, val_auc = validate(
             model, val_loader, criterion, DEVICE

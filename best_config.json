@@ -1,0 +1,19 @@
+{
+  "clahe_clip_limit": 2.0,
+  "clahe_tile_grid": [
+    16,
+    16
+  ],
+  "clahe_channel": "luminance",
+  "use_clahe": true,
+  "model_name": "resnet18",
+  "batch_size": 32,
+  "learning_rate": 5e-05,
+  "optimizer": "adamw",
+  "weight_decay": 0.0,
+  "epochs": 50,
+  "image_size": 224,
+  "horizontal_flip": true,
+  "vertical_flip": false,
+  "rotation_degrees": 15
+}

@@ -1,0 +1,71 @@
+# =============================
+
+# Python
+
+# =============================
+
+**pycache**/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+
+.venv/
+venv/
+env/
+
+# Jupyter
+
+.ipynb_checkpoints/
+
+# =============================
+
+# Models and checkpoints
+
+# =============================
+
+*.pth
+*.pt
+*.h5
+checkpoints/
+analysis/
+gradcam_results/
+
+# =============================
+
+# Data
+
+# =============================
+
+data/images/
+
+# =============================
+
+# IDE and editor files
+
+# =============================
+
+.idea/
+.vscode/
+*.iml
+workspace.xml
+/shelf/
+/httpRequests/
+
+# =============================
+
+# App uploads / generated files
+
+# =============================
+
+frontend/static/uploads/
+
+# =============================
+
+# OS files
+
+# =============================
+
+.DS_Store
+Thumbs.db
