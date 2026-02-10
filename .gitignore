@@ -29,7 +29,9 @@ env/
 *.pt
 *.h5
 checkpoints/
-analysis/
+analysis/22/
+analysis/**pycache**/
+analysis/img/
 gradcam_results/
 
 # =============================
